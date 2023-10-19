@@ -5,12 +5,12 @@
       <input hidden ref="inputGba" type="file" accept=".gba" @change="eggvance.loadGba()" />
       <input hidden ref="inputSav" type="file" accept=".sav" @change="eggvance.loadSav()" />
       <div class="flex gap-4">
-        <button class="button" :class="{ disabled }" @click="inputGba.click()">Load ROM</button>
-        <button class="button" :class="{ disabled }" @click="inputSav.click()">Load save</button>
-        <button class="button" :class="{ disabled }" @click="eggvance.loadDemo()">Load demo</button>
-        <button class="button" @click="controls = !controls">
+        <Button :disabled="disabled" @click="inputGba.click()">Load ROM</Button>
+        <Button :disabled="disabled" @click="inputSav.click()">Load save</Button>
+        <Button :disabled="disabled" @click="eggvance.loadDemo()">Load demo</Button>
+        <Button @click="controls = !controls">
           {{ controls ? 'Hide controls' : 'Show controls' }}
-        </button>
+        </Button>
       </div>
       <Controls v-show="controls" class="w-full max-w-screen-sm" />
     </div>
@@ -20,6 +20,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import Controls from './components/Controls.vue';
+import Button from './components/Button.vue';
 
 const inputGba = ref();
 const inputSav = ref();
@@ -93,22 +94,3 @@ onMounted(() => {
   document.body.appendChild(script);
 });
 </script>
-
-<style lang="scss" scoped>
-.button {
-  @apply px-2;
-  @apply py-1;
-  @apply bg-gray-6;
-  @apply text-gray-2;
-  @apply font-medium;
-  @apply select-none;
-
-  &:hover {
-    @apply bg-gray-5;
-  }
-
-  &:active {
-    @apply bg-gray-4;
-  }
-}
-</style>
