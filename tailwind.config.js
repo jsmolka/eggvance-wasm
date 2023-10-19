@@ -9,6 +9,8 @@ export default {
         4: 'var(--gray-4)',
         5: 'var(--gray-5)',
         6: 'var(--gray-6)',
+        7: 'var(--gray-7)',
+        8: 'var(--gray-8)',
       },
       accent: 'var(--accent)',
     },

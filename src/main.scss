@@ -5,8 +5,8 @@
 @layer utilities {
   .disabled {
     @apply opacity-50;
-    @apply select-none;
     @apply pointer-events-none;
+    @apply select-none;
   }
 }
 
@@ -19,22 +19,24 @@
 }
 
 :root {
-  --gray-1: #f2f7ff; // hsv(220,  5, 100)
-  --gray-2: #dadee5; // hsv(220,  5,  90)
-  --gray-3: #6b768c; // hsv(220, 24,  55)
-  --gray-4: #4b5466; // hsv(220, 26,  40)
-  --gray-5: #373e4c; // hsv(220, 28,  30)
-  --gray-6: #242933; // hsv(220, 30,  20)
-  --accent: #5d80ab;
+  --gray-1: #eceff4; // hsv(218,  3, 96)
+  --gray-2: #dadee5; // hsv(218,  5, 90)
+  --gray-3: #667188; // hsv(220, 25, 53)
+  --gray-4: #4c566a; // hsv(220, 28, 42)
+  --gray-5: #434c5e; // hsv(220, 29, 37)
+  --gray-6: #3b4252; // hsv(220, 28, 32)
+  --gray-7: #2e3440; // hsv(220, 28, 25)
+  --gray-8: #242933; // hsv(220, 29, 20)
+  --accent: #5e81ac; // hsv(213, 45, 67)
 }
 
 html {
-  @apply bg-gray-6;
+  @apply bg-gray-8;
   @apply text-gray-2;
 
   font-family: Inter, Roboto, ui-sans-serif, sans-serif;
   font-feature-settings: 'cv07';
-  font-size: 14;
+  font-size: 14px;
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -46,23 +48,26 @@ html {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--gray-4) var(--gray-5);
+  scrollbar-color: var(--gray-6) var(--gray-7);
 }
 
 ::-webkit-scrollbar {
-  @apply w-2;
-  @apply h-2;
+  @apply w-2.5;
+  @apply h-2.5;
 }
 
 ::-webkit-scrollbar-track-piece {
-  @apply bg-gray-5;
+  @apply bg-gray-7;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-4;
+  @apply bg-gray-6;
 
-  &:hover,
+  &:hover {
+    @apply bg-gray-5;
+  }
+
   &:active {
-    @apply bg-gray-3;
+    @apply bg-gray-4;
   }
 }

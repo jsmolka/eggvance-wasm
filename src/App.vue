@@ -98,13 +98,17 @@ onMounted(() => {
 .button {
   @apply px-2;
   @apply py-1;
-  @apply bg-gray-4;
+  @apply bg-gray-6;
   @apply text-gray-2;
   @apply font-medium;
   @apply select-none;
 
   &:hover {
-    @apply brightness-110;
+    @apply bg-gray-5;
+  }
+
+  &:active {
+    @apply bg-gray-4;
   }
 }
 </style>
