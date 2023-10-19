@@ -12,7 +12,11 @@ export default {
         7: 'var(--gray-7)',
         8: 'var(--gray-8)',
       },
-      accent: 'var(--accent)',
+      blue: {
+        1: 'var(--blue-1)',
+        2: 'var(--blue-2)',
+        3: 'var(--blue-3)',
+      },
     },
   },
 };

@@ -27,7 +27,9 @@
   --gray-6: #3b4252; // hsv(220, 28, 32)
   --gray-7: #2e3440; // hsv(220, 28, 25)
   --gray-8: #242933; // hsv(220, 29, 20)
-  --accent: #5e81ac; // hsv(213, 45, 67)
+  --blue-1: #749fd4; // hsv(213, 45, 83)
+  --blue-2: #6990bf; // hsv(213, 45, 75)
+  --blue-3: #5e81ac; // hsv(213, 45, 67)
 }
 
 html {
@@ -42,7 +44,7 @@ html {
 }
 
 ::selection {
-  @apply bg-accent;
+  @apply bg-blue-3;
   @apply text-gray-2;
 }
 
