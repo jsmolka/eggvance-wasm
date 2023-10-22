@@ -86,7 +86,7 @@
     @apply px-2.5;
     @apply py-1.5;
     @apply border;
-    @apply border-gray-4;
+    @apply border-gray-6;
   }
 }
 </style>

@@ -19,6 +19,7 @@ defineProps({
   @apply py-1;
   @apply bg-gray-6;
   @apply text-gray-2;
+  @apply rounded-sm;
   @apply select-none;
 
   &:hover {

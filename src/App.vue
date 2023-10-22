@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen p-4">
+  <div class="flex justify-center items-center h-full p-4">
     <div class="flex flex-col items-center gap-4 w-full max-w-screen-xl">
       <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
       <input hidden ref="inputGba" type="file" accept=".gba" @change="eggvance.loadGba()" />
