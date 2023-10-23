@@ -6,6 +6,9 @@
     "dev": "vite",
     "build": "vite build"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "dependencies": {
     "vue": "^3.3.4"
   },

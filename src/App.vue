@@ -9,7 +9,7 @@
         <Button :disabled="disabled" @click="inputSav.click()">Load save</Button>
         <Button :disabled="disabled" @click="eggvance.loadDemo()">Load demo</Button>
         <Button @click="controls = !controls">
-          {{ controls ? "Hide controls" : "Show controls" }}
+          {{ controls ? 'Hide controls' : 'Show controls' }}
         </Button>
       </div>
       <Controls v-show="controls" class="w-full max-w-screen-sm" />
@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-import Controls from "./components/Controls.vue";
-import Button from "./components/Button.vue";
+import { computed, onMounted, ref } from 'vue';
+import Controls from './components/Controls.vue';
+import Button from './components/Button.vue';
 
 const inputGba = ref();
 const inputSav = ref();
@@ -35,7 +35,7 @@ const readFile = async (input) => {
       const reader = new FileReader();
       reader.onload = () => resolve(new Uint8Array(reader.result));
       reader.readAsArrayBuffer(input.files[0]);
-      input.value = "";
+      input.value = '';
     });
   } finally {
     disabled.value = false;
@@ -57,13 +57,13 @@ window.Module = {
 
   async loadGba() {
     const data = await readFile(inputGba.value);
-    const name = writeFile(data, "gba");
+    const name = writeFile(data, 'gba');
     this.eggvanceLoadGba(name);
   },
 
   async loadSav() {
     const data = await readFile(inputSav.value);
-    const name = writeFile(data, "sav");
+    const name = writeFile(data, 'sav');
     this.eggvanceLoadSav(name);
   },
 
@@ -72,13 +72,13 @@ window.Module = {
     try {
       const data = await new Promise((resolve) => {
         const request = new XMLHttpRequest();
-        request.open("GET", "/celeste.gba");
-        request.responseType = "arraybuffer";
+        request.open('GET', '/celeste.gba');
+        request.responseType = 'arraybuffer';
         request.onload = () => resolve(new Uint8Array(request.response));
         request.send();
       });
 
-      const name = writeFile(data, "gba");
+      const name = writeFile(data, 'gba');
       this.eggvanceLoadGba(name);
     } finally {
       disabled.value = false;
@@ -87,10 +87,10 @@ window.Module = {
 };
 
 onMounted(() => {
-  window.Module.canvas = document.getElementById("canvas");
+  window.Module.canvas = document.getElementById('canvas');
 
-  const script = document.createElement("script");
-  script.src = "/eggvance.js";
+  const script = document.createElement('script');
+  script.src = '/eggvance.js';
   document.body.appendChild(script);
 });
 </script>
