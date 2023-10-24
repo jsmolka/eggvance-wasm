@@ -1,26 +1,23 @@
 <template>
-  <div class="flex justify-center items-center h-full p-4">
-    <div class="flex flex-col items-center gap-4 w-full max-w-screen-xl">
-      <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
-      <input hidden ref="inputGba" type="file" accept=".gba" @change="eggvance.loadGba()" />
-      <input hidden ref="inputSav" type="file" accept=".sav" @change="eggvance.loadSav()" />
-      <div class="flex gap-4">
-        <Button :disabled="disabled" @click="inputGba.click()">Load ROM</Button>
-        <Button :disabled="disabled" @click="inputSav.click()">Load save</Button>
-        <Button :disabled="disabled" @click="eggvance.loadDemo()">Load demo</Button>
-        <Button @click="controls = !controls">
-          {{ controls ? 'Hide controls' : 'Show controls' }}
-        </Button>
-      </div>
-      <Controls v-show="controls" class="w-full max-w-screen-sm" />
+  <div class="flex flex-col items-center gap-4 w-full max-w-screen-xl p-4">
+    <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
+    <input hidden ref="inputGba" type="file" accept=".gba" @change="eggvance.loadGba()" />
+    <input hidden ref="inputSav" type="file" accept=".sav" @change="eggvance.loadSav()" />
+    <div class="flex gap-4">
+      <Button :disabled="disabled" @click="inputGba.click()">Load ROM</Button>
+      <Button :disabled="disabled" @click="inputSav.click()">Load save</Button>
+      <Button :disabled="disabled" @click="eggvance.loadDemo()">Load demo</Button>
+      <Button @click="controls = !controls">
+        {{ controls ? 'Hide controls' : 'Show controls' }}
+      </Button>
     </div>
+    <Controls v-show="controls" class="w-full max-w-screen-sm" />
   </div>
 </template>
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import Controls from './components/Controls.vue';
-import Button from './components/Button.vue';
+import { Button, Controls } from './components';
 
 const inputGba = ref();
 const inputSav = ref();
@@ -31,7 +28,7 @@ const eggvance = computed(() => window.Module);
 const readFile = async (input) => {
   disabled.value = true;
   try {
-    return new Promise((resolve) => {
+    return await new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = () => resolve(new Uint8Array(reader.result));
       reader.readAsArrayBuffer(input.files[0]);
@@ -70,14 +67,12 @@ window.Module = {
   async loadDemo() {
     disabled.value = true;
     try {
-      const data = await new Promise((resolve) => {
-        const request = new XMLHttpRequest();
-        request.open('GET', '/celeste.gba');
-        request.responseType = 'arraybuffer';
-        request.onload = () => resolve(new Uint8Array(request.response));
-        request.send();
-      });
+      const response = await fetch('./celeste.gba');
+      if (!response.ok) {
+        return;
+      }
 
+      const data = new Uint8Array(await response.arrayBuffer());
       const name = writeFile(data, 'gba');
       this.eggvanceLoadGba(name);
     } finally {

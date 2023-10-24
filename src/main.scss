@@ -49,6 +49,11 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+#app {
+  @apply grid;
+  @apply place-items-center;
+}
+
 ::selection {
   @apply bg-blue-3;
   @apply text-gray-2;

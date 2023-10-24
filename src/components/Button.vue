@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="{ disabled }">
+  <button :class="{ disabled }">
     <slot />
   </button>
 </template>
@@ -14,9 +14,9 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.button {
+button {
   @apply px-2;
-  @apply py-1;
+  @apply py-1.5;
   @apply bg-gray-6;
   @apply text-gray-2;
   @apply rounded-sm;

@@ -1,5 +1,5 @@
 <template>
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <th>Emulator</th>
@@ -73,7 +73,7 @@
 </template>
 
 <style lang="scss" scoped>
-.table {
+table {
   @apply text-left;
 
   th {
