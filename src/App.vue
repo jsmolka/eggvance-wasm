@@ -17,7 +17,8 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import { Button, Controls } from './components';
+import Button from './components/Button.vue';
+import Controls from './components/Controls.vue';
 
 const controls = ref(false);
 const disabled = ref(false);
