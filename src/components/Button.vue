@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ disabled }">
+  <button :class="{ disabled }" v-bind="$attrs">
     <slot />
   </button>
 </template>
