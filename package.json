@@ -1,5 +1,7 @@
 {
   "name": "eggvance-wasm",
+  "version": "1.0.0",
+  "description": "An eggvance WebAssembly port.",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,15 +12,16 @@
     "singleQuote": true
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.4.13",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^5.0.3",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "sass": "^1.69.3",
-    "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.2",
+    "sass": "^1.69.7",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.11"
   }
 }
