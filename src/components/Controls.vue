@@ -77,7 +77,7 @@ table {
   @apply text-left;
 
   th {
-    @apply text-gray-1;
+    @apply text-shade-1;
     @apply font-bold;
   }
 
@@ -86,7 +86,7 @@ table {
     @apply px-2.5;
     @apply py-1.5;
     @apply border;
-    @apply border-gray-6;
+    @apply border-shade-6;
   }
 }
 </style>
