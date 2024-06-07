@@ -2,9 +2,9 @@
   <div class="flex flex-col items-center w-full max-w-screen-xl gap-4 p-4">
     <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
     <div class="grid grid-cols-2 sm:flex sm:flex-row gap-4">
-      <Button variant="secondary" @click="loadRom">Load ROM</Button>
-      <Button variant="secondary" @click="loadSave">Load save</Button>
-      <Button variant="secondary" @click="loadDemo">Load demo</Button>
+      <Button variant="secondary" :disabled="disabled" @click="loadRom">Load ROM</Button>
+      <Button variant="secondary" :disabled="disabled" @click="loadSave">Load save</Button>
+      <Button variant="secondary" :disabled="disabled" @click="loadDemo">Load demo</Button>
       <Dialog v-slot="{ close }">
         <DialogTrigger as-child>
           <Button variant="secondary">Show controls</Button>
@@ -60,8 +60,9 @@ import {
 } from '@/components/ui/table';
 import { readAsArrayBuffer, selectFile } from '@/utils/filesystem';
 import _ from 'lodash';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
+const disabled = ref(false);
 const eggvance = computed(() => window.Module);
 
 const readAsByteArray = async (file) => {
@@ -76,27 +77,44 @@ const write = (data, extension) => {
 
 const loadRom = async () => {
   const file = await selectFile('gba');
-  const data = await readAsByteArray(file);
-  const name = write(data, 'gba');
-  eggvance.value.eggvanceLoadGba(name);
+
+  disabled.value = true;
+  try {
+    const data = await readAsByteArray(file);
+    const name = write(data, 'gba');
+    eggvance.value.eggvanceLoadGba(name);
+  } finally {
+    disabled.value = false;
+  }
 };
 
 const loadSave = async () => {
   const file = await selectFile('sav');
-  const data = await readAsByteArray(file);
-  const name = write(data, 'sav');
-  eggvance.value.eggvanceLoadSav(name);
+
+  disabled.value = true;
+  try {
+    const data = await readAsByteArray(file);
+    const name = write(data, 'sav');
+    eggvance.value.eggvanceLoadSav(name);
+  } finally {
+    disabled.value = false;
+  }
 };
 
 const loadDemo = async () => {
-  const response = await fetch('/celeste.gba');
-  if (!response.ok) {
-    return;
-  }
+  disabled.value = true;
+  try {
+    const response = await fetch('/celeste.gba');
+    if (!response.ok) {
+      return;
+    }
 
-  const data = new Uint8Array(await response.arrayBuffer());
-  const name = write(data, 'gba');
-  eggvance.value.eggvanceLoadGba(name);
+    const data = new Uint8Array(await response.arrayBuffer());
+    const name = write(data, 'gba');
+    eggvance.value.eggvanceLoadGba(name);
+  } finally {
+    disabled.value = false;
+  }
 };
 
 onMounted(() => {
