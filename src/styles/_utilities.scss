@@ -3,3 +3,7 @@
   @apply pointer-events-none;
   @apply select-none;
 }
+
+.font-feature-tnum {
+  font-feature-settings: 'tnum';
+}

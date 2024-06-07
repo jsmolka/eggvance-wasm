@@ -1,3 +1,4 @@
+import animate from 'tailwindcss-animate';
 import colors from 'tailwindcss/colors';
 
 export default {
@@ -24,4 +25,5 @@ export default {
       transparent: colors.transparent,
     },
   },
+  plugins: [animate],
 };
