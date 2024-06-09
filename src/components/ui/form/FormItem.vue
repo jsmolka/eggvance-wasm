@@ -1,7 +1,7 @@
 <template>
-  <tbody :class="cn('odd:[&_tr]:bg-shade-7', props.class)">
+  <div :class="cn('flex flex-col gap-2', props.class)">
     <slot />
-  </tbody>
+  </div>
 </template>
 
 <script setup>

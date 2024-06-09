@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center w-full max-w-screen-xl gap-4 p-4">
+  <Form class="items-center w-full max-w-screen-xl p-4">
     <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
     <div class="grid grid-cols-2 sm:flex sm:flex-row gap-4">
       <Button variant="secondary" :disabled="disabled" @click="loadRom">Load ROM</Button>
@@ -14,29 +14,31 @@
             <DialogTitle>Controls</DialogTitle>
             <DialogDescription v-show="false">Emulator controls</DialogDescription>
           </DialogHeader>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Emulator</TableHead>
-                <TableHead>Keyboard</TableHead>
-                <TableHead>Controller</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow v-for="{ emulator, keyboard, controller } in controls">
-                <TableCell>{{ emulator }}</TableCell>
-                <TableCell>{{ keyboard }}</TableCell>
-                <TableCell>{{ controller }}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <TableWrapper>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Emulator</TableHead>
+                  <TableHead>Keyboard</TableHead>
+                  <TableHead>Controller</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow v-for="{ emulator, keyboard, controller } in controls">
+                  <TableCell>{{ emulator }}</TableCell>
+                  <TableCell>{{ keyboard }}</TableCell>
+                  <TableCell>{{ controller }}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableWrapper>
           <DialogFooter>
             <Button variant="secondary" @click="close">Close</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
-  </div>
+  </Form>
 </template>
 
 <script setup>
@@ -50,6 +52,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Form } from '@/components/ui/form';
 import {
   Table,
   TableBody,
@@ -57,6 +60,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableWrapper,
 } from '@/components/ui/table';
 import { readAsArrayBuffer, selectFile } from '@/utils/filesystem';
 import _ from 'lodash';
