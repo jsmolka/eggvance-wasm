@@ -5,7 +5,7 @@
       <Button variant="secondary" :disabled="disabled" @click="loadRom">Load ROM</Button>
       <Button variant="secondary" :disabled="disabled" @click="loadSave">Load save</Button>
       <Button variant="secondary" :disabled="disabled" @click="loadDemo">Load demo</Button>
-      <Dialog v-slot="{ close }">
+      <Dialog>
         <DialogTrigger as-child>
           <Button variant="secondary">Show controls</Button>
         </DialogTrigger>
@@ -33,7 +33,9 @@
             </Table>
           </TableWrapper>
           <DialogFooter>
-            <Button variant="secondary" @click="close">Close</Button>
+            <DialogClose as-child>
+              <Button variant="secondary">Close</Button>
+            </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -45,6 +47,7 @@
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
