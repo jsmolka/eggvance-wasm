@@ -5,7 +5,7 @@
     @update:checked="emit('update:modelValue', $event)"
     :class="
       cn(
-        'peer inline-flex items-center shrink-0 w-9 h-5 cursor-pointer border-2 border-transparent rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-3 disabled:opacity-50 disabled:cursor-not-allowed data-[state=checked]:bg-brand-3 data-[state=unchecked]:bg-shade-6',
+        'peer inline-flex items-center shrink-0 w-9 h-5 cursor-pointer border-2 border-transparent rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed data-[state=checked]:bg-brand-3 data-[state=unchecked]:bg-shade-6',
         props.class,
       )
     "
@@ -13,7 +13,7 @@
     <SwitchThumb
       :class="
         cn(
-          'block size-4 bg-shade-8 rounded-full pointer-events-none ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0',
+          'block size-4 bg-shade-2 rounded-full pointer-events-none ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0',
         )
       "
     />

@@ -1,9 +1,8 @@
 <template>
   <input
-    v-bind="$attrs"
     :class="
       cn(
-        'flex w-full h-8 px-2 py-1.5 bg-shade-7 border rounded-sm placeholder:text-shade-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-3 disabled:opacity-50 disabled:cursor-not-allowed',
+        'flex w-full h-8 px-2 py-1.5 bg-shade-7 border rounded-sm placeholder:text-shade-3 disabled:opacity-50 disabled:cursor-not-allowed',
         props.class,
       )
     "
@@ -16,7 +15,7 @@
     @change="change"
     @focusin="select"
     @keydown="keyDown"
-    @mouseup="clampCursor"
+    @pointerup="clampCursor"
     type="text"
   />
 </template>
@@ -30,6 +29,7 @@ import { computed, nextTick } from 'vue';
 const modelValue = defineModel({ type: Number, required: false });
 
 const props = defineProps({
+  class: { required: false },
   max: { type: Number, default: Number.MAX_SAFE_INTEGER },
   min: { type: Number, default: Number.MIN_SAFE_INTEGER },
   precision: { type: Number, default: 0 },
