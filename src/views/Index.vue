@@ -65,6 +65,7 @@ import {
   TableRow,
   TableWrapper,
 } from '@/components/ui/table';
+import { colors } from '@/utils/colors';
 import { readAsArrayBuffer, selectFile } from '@/utils/filesystem';
 import _ from 'lodash';
 import { computed, onMounted, ref } from 'vue';
@@ -129,7 +130,7 @@ onMounted(() => {
     canvas: document.getElementById('canvas'),
 
     onRuntimeInitialized() {
-      this.eggvanceSetBackground(0x242933);
+      this.eggvanceSetBackground(colors.shade8.int);
     },
   };
 
