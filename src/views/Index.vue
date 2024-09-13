@@ -42,8 +42,7 @@ import { Form } from '@/components/ui/form';
 import { colors } from '@/utils/colors';
 import { readAsArrayBuffer, selectFile } from '@/utils/filesystem';
 import Controls from '@/views/Controls.vue';
-import _ from 'lodash';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, useId } from 'vue';
 
 const disabled = ref(false);
 const eggvance = computed(() => window.Module);
@@ -53,7 +52,7 @@ const readAsByteArray = async (file) => {
 };
 
 const write = (data, extension) => {
-  const name = `${_.uniqueId()}.${extension}`;
+  const name = `${useId()}.${extension}`;
   FS.writeFile(name, data);
   return name;
 };
