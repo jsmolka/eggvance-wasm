@@ -1,7 +1,7 @@
 <template>
-  <Form class="items-center w-full max-w-screen-xl p-4">
-    <canvas id="canvas" class="w-full aspect-[3/2] pointer-events-none select-none" />
-    <div class="grid grid-cols-2 sm:flex sm:flex-row gap-4">
+  <Form class="w-full max-w-screen-xl items-center p-4">
+    <canvas id="canvas" class="pointer-events-none aspect-3/2 w-full select-none" />
+    <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row">
       <Button variant="secondary" :disabled="disabled" @click="loadRom">Load ROM</Button>
       <Button variant="secondary" :disabled="disabled" @click="loadSave">Load save</Button>
       <Button variant="secondary" :disabled="disabled" @click="loadDemo">Load demo</Button>
