@@ -1,5 +1,5 @@
 <template>
-  <div class="grid place-items-center h-full">
+  <div class="grid h-full place-items-center">
     <RouterView />
   </div>
 </template>
